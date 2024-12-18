@@ -236,7 +236,7 @@ console.log(JSON.parse(localStorage.getItem('cart')));
             >
               &times;
             </button>
-            <img src="/sizingGuide.png" alt="Sizing Guide Graphic" className="w-50 h-50 mt-10" />
+            <img src="sizingGuide.png" alt="Sizing Guide Graphic" className="w-50 h-50 mt-10" />
             <h2 className="text-2xl font-bold mb-4 mt-10">View Sizing Guide</h2>
             <div className="overflow-x-auto">
               <table className="min-w-full bg-white border-collapse border border-gray-300">
