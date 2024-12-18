@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="w-full md:w-1/4 text-white text-center md:text-left mt-4 mb-4">
           <h1 className="text-lg font-semibold">Member Names</h1>
           <h2 className="text-sm font-medium">Smruthi G - Visual Design Manager</h2>
-          <h2 className="text-sm font-medium">STAGEFRIGHTBAND N - Website Developer</h2>
+          <h2 className="text-sm font-medium">Tanvi N - Website Developer</h2>
         </div>
 
         {/* Member IDs Section */}
