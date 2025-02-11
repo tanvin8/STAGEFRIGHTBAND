@@ -99,16 +99,19 @@ const AlbumInfo = () => {
   return (
     <div className="bg-pageBlack py-20">
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center">
-        
         {/* Album Cover Carousel */}
         <div className="w-full md:w-1/2 flex justify-center">
           <div className="flex-col">
-            <h2 className="font-metal text-7xl font-bold mb-4 mr-[400px] z-10 mt-[-50px] text-white"
-              style={{ textShadow: "0 0 5px #069494, 0 0 10px #069494, 0 0 20px #069494,0 0 30px #069494, 0 0 40px #069494" }}>
+            <h2
+              className="font-metal text-5xl md:text-6xl lg:text-7xl font-bold mb-4 z-10 mt-[-30px] text-white text-center md:text-left"
+              style={{ textShadow: "0 0 5px #001834, 0 0 10px #001834, 0 0 20px #069494, 0 0 30px #069494, 0 0 40px #069494" }}
+            >
               Discography
             </h2>
-            <h2 className="font-fancy text-2xl font-bold mb-4 relative z-10 text-white mr-[0px] mb-[40px] "
-              style={{ textShadow: "0 0 10px #069494, 0 0 30px #069494" }}>
+            <h2
+              className="font-fancy text-xl md:text-2xl font-bold mb-4 relative z-10 text-white text-center md:text-left"
+              style={{ textShadow: "0 0 10px #001834, 0 0 40px #069494, 0 0 30px #069494" }}
+            >
               Stage Fright's Greatest Hits
             </h2>
 
@@ -116,8 +119,12 @@ const AlbumInfo = () => {
               effect="coverflow"
               grabCursor={true}
               centeredSlides={true}
-              slidesPerView={2} 
-              loop={true} // Infinite loop
+              slidesPerView={1}
+              breakpoints={{
+                640: { slidesPerView: 1 },
+                1024: { slidesPerView: 2 },
+              }}
+              loop={true}
               coverflowEffect={{
                 rotate: 0,
                 stretch: 0,
@@ -131,7 +138,7 @@ const AlbumInfo = () => {
               }}
               onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
               modules={[EffectCoverflow, Navigation, Pagination]}
-              className="w-[200px] md:w-[500px] lg:w-[700px]"
+              className="w-[250px] sm:w-[300px] md:w-[400px] lg:w-[500px] xl:w-[670px]"
             >
               {albums.map((album, index) => (
                 <SwiperSlide key={index} className="relative">
@@ -147,29 +154,33 @@ const AlbumInfo = () => {
             {/* Navigation Buttons */}
             <div className="flex justify-center mt-6 space-x-8">
               <button className="prev-btn text-white p-4 rounded-full hover:text-gray-400 transition-all">
-                <FontAwesomeIcon icon={faCaretLeft} className="text-4xl" />
+                <FontAwesomeIcon icon={faCaretLeft} className="text-3xl md:text-4xl" />
               </button>
               <button className="next-btn text-white rounded-full hover:text-gray-400 transition-all">
-                <FontAwesomeIcon icon={faCaretRight} className="text-4xl" />
+                <FontAwesomeIcon icon={faCaretRight} className="text-3xl md:text-4xl" />
               </button>
             </div>
           </div>
         </div>
 
         {/* Album Description */}
-        <div className="w-full md:w-1/2 pl-8 text-white mt-8 md:mt-0">
-          <h2 className="font-fancy text-4xl font-bold mb-2 ml-[70px] mt-[-60px] text-center md:text-left"
-            style={{ textShadow: `0 0 10px #fff, 0 0 30px ${albums[activeIndex].shadowColor}, 0 0 40px ${albums[activeIndex].shadowColor}` }}>
+        <div className="w-full md:w-1/2 px-4 md:px-8 text-white mt-8 md:mt-0">
+          <h2
+            className="font-fancy text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-center md:text-left"
+            style={{ textShadow: `0 0 10px #fff, 0 0 30px ${albums[activeIndex].shadowColor}, 0 0 40px ${albums[activeIndex].shadowColor}` }}
+          >
             {albums[activeIndex].name}
           </h2>
-          <p className="text-lg ml-[70px] font-quicksand mr-[30px] text-center md:text-left">
+          <p className="text-sm sm:text-base md:text-lg font-quicksand text-center md:text-left">
             {albums[activeIndex].description}
           </p>
-          <p className="text-lg font-bold ml-[70px] font-fancy mr-[30px] mt-[20px] mb-[10px] text-center md:text-left"
-            style={{ textShadow: `0 0 10px #fff, 0 0 30px ${albums[activeIndex].shadowColor}, 0 0 40px ${albums[activeIndex].shadowColor}` }}>
+          <p
+            className="text-sm sm:text-base md:text-lg font-bold font-fancy mt-4 mb-2 text-center md:text-left"
+            style={{ textShadow: `0 0 10px #fff, 0 0 30px ${albums[activeIndex].shadowColor}, 0 0 40px ${albums[activeIndex].shadowColor}` }}
+          >
             Track List:
           </p>
-          <p className="text-lg whitespace-pre-line ml-[70px] font-quicksand mr-[30px] text-center md:text-left">
+          <p className="text-sm sm:text-base md:text-lg whitespace-pre-line font-quicksand text-center md:text-left">
             {albums[activeIndex].trackList}
           </p>
         </div>
@@ -177,7 +188,6 @@ const AlbumInfo = () => {
     </div>
   );
 };
-
 
 const App = () => (
   <>

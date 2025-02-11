@@ -23,11 +23,30 @@ const Cart = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
+    // Validate required fields before opening the modal
+    if (
+      !billingDetails.cardNumber ||
+      !billingDetails.expiryDate ||
+      !billingDetails.cvv ||
+      !billingDetails.firstName ||
+      !billingDetails.lastName ||
+      !billingDetails.billingZip ||
+      !shippingDetails.email ||
+      !shippingDetails.firstName ||
+      !shippingDetails.lastName ||
+      !shippingDetails.address ||
+      !shippingDetails.zip ||
+      !shippingDetails.state ||
+      !shippingDetails.country
+    ) {
+      alert('Please fill in all required fields.');
+      return;
+    }
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
-    setCartItems([]); 
+    setCartItems([]);
     setBillingDetails({
       cardNumber: '',
       expiryDate: '',
@@ -79,13 +98,11 @@ const Cart = () => {
     </div>
   );
 
-  
-
   return (
-    <div className="font-quicksand text-center bg-pageBlack text-white">
+    <div className="font-quicksand text-center bg-pageBlack text-white p-4">
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Order Details Section */}
-        <div className="lg:w-1/2 ml-16">
+        <div className="lg:w-1/2 lg:ml-16 mx-4">
           <h2 className="py-8 text-2xl font-bold mb-[-40px]">Billing Details</h2>
           <div className="mt-4 border border-gray-400 p-4 rounded-md bg-white">
             <label className="block mb-2 text-black font-semibold text-left">
@@ -97,9 +114,10 @@ const Cart = () => {
                 onChange={(e) => setBillingDetails({ ...billingDetails, cardNumber: e.target.value })}
                 className="w-full border border-gray-300 p-2 rounded-md mt-1"
                 placeholder="0000 0000 0000 0000"
+                required
               />
             </label>
-            <div className="flex items-center text-left font-semibold grid gap-4 grid-cols-2 text-black">
+            <div className="flex items-center text-left font-semibold grid gap-4 grid-cols-1 md:grid-cols-2 text-black">
               <label>
                 Expiration Date:
                 <input
@@ -109,6 +127,7 @@ const Cart = () => {
                   onChange={(e) => setBillingDetails({ ...billingDetails, expiryDate: e.target.value })}
                   className="w-full border border-gray-300 p-2 rounded-md mt-1"
                   placeholder="MM/YY"
+                  required
                 />
               </label>
               <label>
@@ -120,10 +139,11 @@ const Cart = () => {
                   onChange={(e) => setBillingDetails({ ...billingDetails, cvv: e.target.value })}
                   className="w-full border border-gray-300 p-2 rounded-md mt-1"
                   placeholder="000"
+                  required
                 />
               </label>
             </div>
-            <div className="flex items-center text-left font-semibold grid gap-4 grid-cols-2 text-black">
+            <div className="flex items-center text-left font-semibold grid gap-4 grid-cols-1 md:grid-cols-2 text-black">
               <label>
                 First Name:
                 <input
@@ -132,6 +152,7 @@ const Cart = () => {
                   value={billingDetails.firstName}
                   onChange={(e) => setBillingDetails({ ...billingDetails, firstName: e.target.value })}
                   className="w-full border border-gray-300 p-2 rounded-md mt-1"
+                  required
                 />
               </label>
               <label>
@@ -142,6 +163,7 @@ const Cart = () => {
                   value={billingDetails.lastName}
                   onChange={(e) => setBillingDetails({ ...billingDetails, lastName: e.target.value })}
                   className="w-full border border-gray-300 p-2 rounded-md mt-1"
+                  required
                 />
               </label>
             </div>
@@ -153,6 +175,7 @@ const Cart = () => {
                 value={billingDetails.billingZip}
                 onChange={(e) => setBillingDetails({ ...billingDetails, billingZip: e.target.value })}
                 className="w-full border border-gray-300 p-2 rounded-md mt-1"
+                required
               />
             </label>
           </div>
@@ -167,9 +190,10 @@ const Cart = () => {
                 value={shippingDetails.email}
                 onChange={(e) => setShippingDetails({ ...shippingDetails, email: e.target.value })}
                 className="w-full border border-gray-300 p-2 rounded-md mt-1"
+                required
               />
             </label>
-            <div className="flex items-center text-left font-semibold grid gap-4 grid-cols-2 text-black">
+            <div className="flex items-center text-left font-semibold grid gap-4 grid-cols-1 md:grid-cols-2 text-black">
               <label>
                 First Name:
                 <input
@@ -178,6 +202,7 @@ const Cart = () => {
                   value={shippingDetails.firstName}
                   onChange={(e) => setShippingDetails({ ...shippingDetails, firstName: e.target.value })}
                   className="w-full border border-gray-300 p-2 rounded-md mt-1"
+                  required
                 />
               </label>
               <label>
@@ -188,10 +213,11 @@ const Cart = () => {
                   value={shippingDetails.lastName}
                   onChange={(e) => setShippingDetails({ ...shippingDetails, lastName: e.target.value })}
                   className="w-full border border-gray-300 p-2 rounded-md mt-1"
+                  required
                 />
               </label>
             </div>
-            <div className="flex items-center text-left font-semibold grid gap-4 grid-cols-2 text-black">
+            <div className="flex items-center text-left font-semibold grid gap-4 grid-cols-1 md:grid-cols-2 text-black">
               <label>
                 Address Line:
                 <input
@@ -200,6 +226,7 @@ const Cart = () => {
                   value={shippingDetails.address}
                   onChange={(e) => setShippingDetails({ ...shippingDetails, address: e.target.value })}
                   className="w-full border border-gray-300 p-2 rounded-md mt-1"
+                  required
                 />
               </label>
               <label>
@@ -210,10 +237,11 @@ const Cart = () => {
                   value={shippingDetails.zip}
                   onChange={(e) => setShippingDetails({ ...shippingDetails, zip: e.target.value })}
                   className="w-full border border-gray-300 p-2 rounded-md mt-1"
+                  required
                 />
               </label>
             </div>
-            <div className="flex items-center text-left font-semibold grid gap-4 grid-cols-2 text-black">
+            <div className="flex items-center text-left font-semibold grid gap-4 grid-cols-1 md:grid-cols-2 text-black">
               <label>
                 State:
                 <input
@@ -222,6 +250,7 @@ const Cart = () => {
                   value={shippingDetails.state}
                   onChange={(e) => setShippingDetails({ ...shippingDetails, state: e.target.value })}
                   className="w-full border border-gray-300 p-2 rounded-md mt-1"
+                  required
                 />
               </label>
               <label>
@@ -232,6 +261,7 @@ const Cart = () => {
                   value={shippingDetails.country}
                   onChange={(e) => setShippingDetails({ ...shippingDetails, country: e.target.value })}
                   className="w-full border border-gray-300 p-2 rounded-md mt-1"
+                  required
                 />
               </label>
             </div>
@@ -239,7 +269,7 @@ const Cart = () => {
         </div>
 
         {/* Order Summary Section */}
-        <div className="w-full lg:w-1/2 mr-16 ml-16">
+        <div className="w-full lg:w-1/2 lg:mr-16 mx-4">
           <h2 className="py-8 text-2xl font-bold">Order Summary</h2>
           <div className="flex justify-between mt-2 text-lg font-medium mb-4 border-b border-gray-400 pb-2">
             <span>QTY</span>
@@ -251,7 +281,7 @@ const Cart = () => {
               <div key={index} className="flex justify-between items-center pb-1">
                 <button
                   onClick={() => removeItem(index)}
-                  className="text-red-400 ml-2"
+                  className="text-red-400 ml-2 font-bold font-quicksand"
                 >
                   X
                 </button>

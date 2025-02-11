@@ -39,7 +39,7 @@ function Tours() {
       <header className="text-center text-white py-8">
   <h1 
     className="font-metal text-7xl font-bold mt-[30px] "
-    style={{ textShadow: "0 0 10px #fff, 0 0 30px #ff6701, 0 0 40px #ff6701" }}
+    style={{ textShadow: "0 0 10px #ba530d, 0 0 30px #ff6701, 0 0 40px #ff6701" }}
   >
     Stage Fright Tours
   </h1>
@@ -54,7 +54,7 @@ function Tours() {
       {/* Tour List */}
       <div className=" py-10">
         <h2 className="font-fancy text-5xl font-semibold text-center mb-6 text-white"
-        style={{ textShadow: "0 0 10px #fff, 0 0 30px #ff6701, 0 0 40px #ff6701" }}>Upcoming Tours</h2>
+        style={{ textShadow: "0 0 10px #ba530d, 0 0 30px #ff6701, 0 0 40px #ff6701" }}>Upcoming Tours</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {tourDates.map((tour) => (
             <div
